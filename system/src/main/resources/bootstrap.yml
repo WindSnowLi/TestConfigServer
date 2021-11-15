@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    config:
+      name: love # 引入多个可用,分割
+      profile: dev
+      discovery:
+        enabled: true
+        service-id: config-server
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8700/eureka # 指定服务注册中心
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port} # 地址格式=ip:端口

@@ -1,0 +1,20 @@
+server:
+  port: 8705
+spring:
+  application:
+    name: config-server
+  profiles:
+    # 读取本地配置
+    active: native
+  cloud:
+    config:
+      server:
+        # 本地配置
+        native:
+          search-locations: classpath:/config # 可用,分割添加多个路径
+        bootstrap: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8700/eureka # 指定服务注册中心
